@@ -1,0 +1,69 @@
+<?php
+/**
+ * <plugin_name>
+ *
+ * DESCRIPTION
+ * <description>
+ *
+ * @package <package>
+ *
+ * @wordpress-plugin
+ * Plugin Name: <plugin_name_presentation>
+ * Plugin URI:  <plugin_uri>
+ * Version:     1.0.0
+ * Author:      <author> <email>
+ * Description: <description>
+ * Copyright:   <copyright>
+ *
+ **/
+class <class_name> {
+    private $version;
+	private $required_params;
+
+	public function __construct($params = array()) {
+		$this->_set_required_params();
+		$this->_get_required_params();
+
+		$required = $this->_check_required($params);
+		if(is_array($required))
+			die('Missing required parameters: ' . implode(', ', $required));
+
+		$this->version = '1.0.0';
+	}
+
+    public function get_version() {
+        return $this->version;
+    }
+
+    /**
+	 * @param $paramList
+	 * @return array|int
+	 */
+	private function _check_required($paramList) {
+		if(!is_array($paramList))
+			return 1;
+
+		if(!is_array($this->required_params))
+			return 1;
+
+		$missing = array();
+
+		foreach($this->required_params as $required) {
+			if(!in_array($required, $paramList))
+				$missing[] = $required;
+		}
+
+		return count($missing) > 0 ? $missing : 0;
+	}
+
+	private function _get_required_params() {
+		return $this->required_params;
+	}
+
+	private function _set_required_params() {
+		$this->required_params = array(
+									// Add required params here
+								);
+		return;
+	}
+}

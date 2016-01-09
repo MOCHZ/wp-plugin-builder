@@ -1,0 +1,31 @@
+<?php
+/**
+ * <plugin_name>
+ *
+ * DESCRIPTION
+ * <description>
+ *
+ * @package <package>
+ *
+ * @wordpress-plugin
+ * Plugin Name: <plugin_name_presentation>
+ * Plugin URI:  <plugin_uri>
+ * Version:     1.0.0
+ * Author:      <author> <email>
+ * Description: <description>
+ * Copyright:   <copyright>
+ *
+ **/
+// Make things easier with a proper separator
+define('DS', DIRECTORY_SEPARATOR);
+
+// Where am I?
+$pluginPath = plugin_dir_path( __FILE__ );
+
+// Add required files, thank you
+require_once( $pluginPath . 'includes' . DS . 'classes' . DS . '<class_file>');
+
+// Container to add parameters in the future
+$params = array();
+
+$<plugin_var> = new <class_name>($params);
